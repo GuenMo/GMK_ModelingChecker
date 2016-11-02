@@ -1,7 +1,13 @@
 # -*- coding:utf-8 -*-
 
-from PySide.QtCore import * 
-from PySide.QtGui import *
+try:
+    from PySide.QtGui import *
+    from PySide.QtCore import *
+except:
+    from PySide2.QtGui import *
+    from PySide2.QtCore import *
+    from PySide2.QtWidgets import *
+    
 import stylesheet
 import utils as utils
 reload(utils)
@@ -38,8 +44,6 @@ class ModelingChekerWindow(QMainWindow):
         
         self.setFixedWidth(340)
         self.setWindowTitle("Modeling Checker")
-        self.stylData  = stylesheet.darkorange
-        self.setStyleSheet(self.stylData)
         
     def initialiseModuelList(self):
         moduleListWidget = QWidget()
@@ -198,7 +202,6 @@ class ModelingChekerWindow(QMainWindow):
         modules = utils.findAllModuel("/Check_Modules")
         step = len(modules)
         pd = QProgressDialog("Checking in progress.",None, 0, step)
-        pd.setStyleSheet(self.stylData)
         pd.show()
         
         i = 0
@@ -212,7 +215,6 @@ class ModelingChekerWindow(QMainWindow):
         modules = utils.findAllModuel("/Check_Modules")
         step = len(modules)
         pd = QProgressDialog("Checking in progress.",None, 0, step)
-        pd.setStyleSheet(self.stylData)
         pd.show()
         
         i = 0

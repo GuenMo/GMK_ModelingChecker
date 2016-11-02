@@ -1,12 +1,19 @@
 # -*- coding:utf-8 -*-
 
 import maya.OpenMayaUI as OMUI
-from shiboken import wrapInstance
-from PySide.QtCore import * 
-from PySide.QtGui import *
 import collections
 import pymel.core as pm
 from datetime import datetime
+
+try:
+    from PySide.QtGui import *
+    from PySide.QtCore import *
+    from shiboken import wrapInstance
+except:
+    from PySide2.QtGui import *
+    from PySide2.QtCore import *
+    from PySide2.QtWidgets import *
+    from shiboken2 import wrapInstance
 
 def getMayaWindow():
     ptr = OMUI.MQtUtil.mainWindow()
